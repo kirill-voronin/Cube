@@ -1,8 +1,9 @@
 package com.company;
 
 import java.awt.*;
+import java.util.Observable;
 
-public class Cube {
+public class Cube  extends Observable {
     private Fcet[] facets;
     public Cube(){
         facets = new Fcet[6];
@@ -87,15 +88,17 @@ public class Cube {
                 facets[i].draw(g);
             }
         }
+
     }
 
     public void perpdraw(Graphics2D g){
+
         for (int i = 0; i < facets.length;i++){
             if (facets[i].normalFace() > 0){
                 facets[i].perpdrawFcet(g);
             }
-//            facets[i].draw(g);
         }
+
     }
 
 

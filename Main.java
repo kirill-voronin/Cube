@@ -1,9 +1,65 @@
 package com.company;
 
-public class Main {
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.AdjustmentEvent;
+
+public class Main extends JFrame{
+
+    public Main(){
+        this.setTitle("MVC");
+        this.setSize(1000, 1000);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Container pane = this.getContentPane();
+        pane.setLayout(new GridBagLayout());
+        GridBagConstraints grid = new GridBagConstraints();
+        Cube cube = new Cube();
+        Viewer panel = new Viewer(cube);
+        MyButton button = new MyButton(cube, panel);
+        MyButton button1 = new MyButton(cube, panel);
+        MyScroll verScroll = new MyScroll(Scrollbar.VERTICAL,0,-360,360, cube, panel);
+        MyScroll horScroll = new MyScroll(Scrollbar.HORIZONTAL,0,-360,360,cube,panel);
+
+
+        cube.addObserver(button);
+
+        grid.fill = GridBagConstraints.BOTH;
+        grid.anchor = GridBagConstraints.CENTER;
+        grid.weightx = 0.5;
+        grid.weighty = 0.07;
+        grid.gridx = 0;
+        grid.gridy = 0;
+        add(button,grid);
+        grid.weightx = 0.5;
+        grid.gridx = 1;
+        grid.gridy = 0;
+        add(button1,grid);
+        grid.weighty = 1;
+        grid.weightx = 1;
+        grid.gridwidth = 2;
+        grid.gridx = 0;
+        grid.gridy = 1;
+        add(panel,grid);
+        grid.gridx = 0;
+        grid.gridy = 2;
+        grid.weighty = 0.01;
+        grid.weightx = 0.01;
+        add(horScroll,grid);
+        grid.gridx = 2;
+        grid.gridy = 1;
+        grid.weighty = 0.01;
+        grid.weightx = 0.01;
+        add(verScroll,grid);
+
+
+
+        this.setVisible(true);
+    }
+
+
 
     public static void main(String[] args) {
-	    R3Vector a = new R3Vector(10,0,0);
+//	    R3Vector a = new R3Vector(10,0,0);
 //	    a.out();
 //	    a.sum(a).sum(a).out();
 //	    R3Vector.sum(a,a).out();
@@ -24,15 +80,17 @@ public class Main {
 //		f.show();
 //		f.translateFacet(5,5,5);
 //		f.show();
-		Cube c = new Cube();
-		c.scaleCube(100);
-		c.translateCube(-50,-50,-50);
-		c.rotateCube(100,45,20);
+
 //		c.scaleCube(5);
 //		c.translateCube(5,5,5);
 //		c.showCube();
-		Viewer v = new Viewer(c);
 
+//        Cube c = new Cube();
+//      c.scaleCube(100);
+//       c.translateCube(-50,-50,-50);
+//        c.rotateCube(125,0,40);
+//		Viewer v = new Viewer(c);
+    new Main();
     }
 
 

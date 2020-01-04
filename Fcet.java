@@ -64,7 +64,7 @@ public class Fcet {
         p.lineTo(vertex[0].getX(),vertex[0].getY());
         p.closePath();
 
-        g.draw(p);
+        g.fill(p);
 
     }
 
