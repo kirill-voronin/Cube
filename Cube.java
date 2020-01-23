@@ -94,7 +94,7 @@ public class Cube  extends Observable {
     public void perpdraw(Graphics2D g){
 
         for (int i = 0; i < facets.length;i++){
-            if (facets[i].normalFace() > 0){
+            if (facets[i].normalFacePerp() > 0){
                 facets[i].perpdrawFcet(g);
             }
         }

@@ -52,6 +52,17 @@ public class Fcet {
         return R3Vector.vectorProduct(a,b).getZ()*(-1);
     }
 
+    public double normalFacePerp(){
+        double c = 600;
+        double t1 = -c/(vertex[0].getZ()-c);
+        double t2= -c/(vertex[1].getZ()-c);
+        double t3 = -c/(vertex[2].getZ()-c);
+        double t4 = -c/(vertex[3].getZ()-c);
+        R3Vector a = new R3Vector(vertex[1].getX()*t2 - vertex[0].getX()*t1, vertex[1].getY()*t2-vertex[0].getY()*t1, vertex[1].getZ()*t2 - vertex[0].getZ()*t1);
+        R3Vector b = new R3Vector(vertex[2].getX()*t3 - vertex[1].getX()*t2, vertex[2].getY()*t3-vertex[1].getY()*t2, vertex[2].getZ()*t3 - vertex[1].getZ()*t2);
+        return R3Vector.vectorProduct(a,b).getZ()*(-1);
+    }
+
 
 
     public void draw(Graphics2D g){
